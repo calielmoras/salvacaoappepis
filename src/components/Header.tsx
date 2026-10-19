@@ -1,3 +1,4 @@
+import { sessao } from '@/data/sessao';
 import { colors, radius, spacing } from '@/constants/theme';
 import { Ionicons } from '@expo/vector-icons';
 import { useRouter } from 'expo-router';
@@ -57,7 +58,14 @@ export default function Header({ titulo, logo }: Props) {
                   <Text style={styles.itemTxt}>{i.t}</Text>
                 </Pressable>
               ))}
-              <Pressable style={styles.item} onPress={() => ir('/login')}>
+              <Pressable
+                style={styles.item}
+                onPress={async () => {
+                  setAberto(false);
+                  await sessao.sair();
+                  router.replace('/login');
+                }}
+              >
                 <Text style={[styles.itemTxt, { color: colors.primary }]}>Sair</Text>
               </Pressable>
             </View>

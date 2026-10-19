@@ -9,7 +9,12 @@ export default function RootLayout() {
   const rotaPublica = pathname === '/' || pathname === '/login';
 
   useEffect(() => {
-    if (!rotaPublica && !sessao.autenticado) router.replace('/login');
+    const verificarSessao = async () => {
+      await sessao.carregar();
+      if (!rotaPublica && !sessao.autenticado) router.replace('/login');
+    };
+
+    verificarSessao();
   }, [pathname, rotaPublica, router]);
 
   if (!rotaPublica && !sessao.autenticado) return null;

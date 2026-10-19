@@ -36,7 +36,7 @@ export default function Login() {
         return;
       }
 
-      sessao.iniciar(usuario.trim());
+      await sessao.iniciar(usuario.trim());
       router.replace('/menu');
     } catch {
       Alert.alert('Erro', 'Não foi possível acessar as contas salvas neste dispositivo.');

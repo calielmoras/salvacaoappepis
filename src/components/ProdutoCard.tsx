@@ -33,13 +33,15 @@ const styles = StyleSheet.create({
   },
   imagemBox: {
     width: '100%',
-    height: 100,
+    height: 104,
     backgroundColor: colors.white,
     borderRadius: radius.sm,
     alignItems: 'center',
     justifyContent: 'center',
     marginBottom: spacing.sm,
+    padding: spacing.xs,
+    overflow: 'hidden',
   },
-  imagem: { width: '90%', height: '90%' },
+  imagem: { width: '100%', height: '100%' },
   nome: { fontSize: 11, textAlign: 'center', color: colors.text, marginBottom: spacing.sm, minHeight: 30 },
 });
