@@ -4,7 +4,7 @@ import { colors, radius, spacing } from '@/constants/theme';
 import { produtos } from '@/data/produtos';
 import { Ionicons } from '@expo/vector-icons';
 import { useState } from 'react';
-import { FlatList, StyleSheet, Text, TextInput, View } from 'react-native';
+import { FlatList, Image, StyleSheet, Text, TextInput, View } from 'react-native';
 
 export default function Produtos() {
   const [busca, setBusca] = useState('');
@@ -32,13 +32,7 @@ export default function Produtos() {
               <Ionicons name="search" size={22} color={colors.text} style={{ marginLeft: spacing.sm }} />
             </View>
 
-            {/* Troque por <Image source={require('@/assets/images/banner.png')} /> quando exportar o banner do Figma */}
-            <View style={styles.banner}>
-              <Text style={styles.bannerTitulo}>Proteja suas</Text>
-              <Text style={[styles.bannerTitulo, { color: colors.primary }]}>mãos</Text>
-              <Text style={styles.bannerTitulo}>no trabalho</Text>
-              <Text style={styles.bannerSub}>Encontre o luva ideal para cada tarefa e risco.</Text>
-            </View>
+            <Image source={require('@/assets/images/banner.png')} style={styles.banner} resizeMode="cover" />
           </View>
         }
         ListEmptyComponent={<Text style={styles.vazio}>Nenhum produto encontrado.</Text>}
@@ -61,14 +55,10 @@ const styles = StyleSheet.create({
   },
   input: { flex: 1, fontSize: 14, fontWeight: '600' },
   banner: {
-    backgroundColor: '#F2F2F2',
-    margin: spacing.xs,
-    padding: spacing.md,
-    borderRadius: radius.sm,
+    width: '100%',
     height: 130,
-    justifyContent: 'center',
+    margin: spacing.xs,
+    borderRadius: radius.sm,
   },
-  bannerTitulo: { fontSize: 18, fontWeight: '800', color: colors.dark, lineHeight: 22 },
-  bannerSub: { fontSize: 9, color: colors.gray, marginTop: spacing.xs },
   vazio: { textAlign: 'center', marginTop: spacing.xl, color: colors.gray },
 });
